@@ -2,13 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import Pusher from 'pusher-js';
 import './style.css';
 import { isObject } from '../../utils/index';
+import { REACT_APP_PUSHER_TOKEN, REACT_APP_PUSHER_CLUSTER,REACT_APP_KEY } from "../../utils/config";
 
 function Chat({ subscriptionChannel, userId, name, img, messages, channelName }) {
     const [inputValue, setInputValue] = useState({ "name": "", "value": "" })
     const [chatMessages, setChatMessages] = useState(messages);
     const PusherRef = useRef();
-
-
+    const pusherToken = REACT_APP_PUSHER_TOKEN;
+    const pusherCluster = REACT_APP_PUSHER_CLUSTER;
+    const appKey = REACT_APP_KEY;
+    
     const triggerWidgetMessage = (payload) => {
         const message = {};
         if (isObject(payload)) message[payload['name']] = payload['value'];
@@ -51,12 +54,12 @@ function Chat({ subscriptionChannel, userId, name, img, messages, channelName })
 
     }
     useEffect(() => {
-        PusherRef.current = new Pusher('cace7e82a44adb737fef', {
-            cluster: 'mt1',
-            authEndpoint: 'https://insentstaging1.widget.insent.ai/pusher/presence/auth/visitor?userid=' + userId,
+        PusherRef.current = new Pusher(pusherToken, {
+            cluster: pusherCluster,
+            authEndpoint: `https://insentstaging1.widget.insent.ai/pusher/presence/auth/visitor?userid=${userId}`,
             auth: {
                 headers: {
-                    Authorization: 'Bearer C6RZpH3Ym4HphfpKHmHD',
+                    Authorization: `Bearer ${appKey}`,
                 },
             },
         });
@@ -78,13 +81,14 @@ function Chat({ subscriptionChannel, userId, name, img, messages, channelName })
         return () => {
             channel.unbind();
         }
+        // eslint-disable-next-line
     }, [subscriptionChannel, userId]);
 
     const getElement = (elementObject) => {
         switch (elementObject["type"]) {
             case 'input':
                 const attributes = elementObject[elementObject["type"]];
-                return <div className={'incomeMessage'}>
+                return <div key={attributes[0].key} className={'incomeMessage'}>
                     <p>{attributes[0].name}</p>
                     <input type={attributes[0].type} name={attributes[0].name} key={attributes[0].key} data-key={attributes[0].key} value={inputValue.value} onChange={handleTextChange} onKeyDown={handleTextChange} placeholder={`Enter ${attributes[0].key}`} className="typeBox" />
                 </div>;
