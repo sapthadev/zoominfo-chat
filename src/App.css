@@ -1,0 +1,23 @@
+.chatWidget{
+    border: none;
+    position: fixed;
+    bottom: 0;
+    right: 35px;
+    z-index: 31415999;
+    visibility: visible;
+    width: 400px;
+    height: 90vh;
+}
+
+.pageTitle{
+    text-align: center;
+}
+
+@media only screen and (max-width : 480px) {
+    .chatWidget{
+        position: static;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}

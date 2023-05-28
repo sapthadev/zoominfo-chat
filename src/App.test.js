@@ -23,7 +23,7 @@ describe('App', () => {
     await act(async () => {
       render(<App />);
     });
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getByTestId('chatIcon')).toBeInTheDocument();
     expect(axios.get).toHaveBeenCalledTimes(1);
     // await act(async () => {fireEvent.click(screen.getByRole('button')) });
     // await act(async () => {expect(axios.get).toHaveBeenCalledTimes(2); }); 

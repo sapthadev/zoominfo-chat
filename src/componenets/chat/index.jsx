@@ -89,14 +89,17 @@ function Chat({ subscriptionChannel, userId, name, img, messages, channelName })
             case 'input':
                 const attributes = elementObject[elementObject["type"]];
                 return <div key={attributes[0].key} className={'incomeMessage'}>
-                    <p>{attributes[0].name}</p>
-                    <input type={attributes[0].type} name={attributes[0].name} key={attributes[0].key} data-key={attributes[0].key} value={inputValue.value} onChange={handleTextChange} onKeyDown={handleTextChange} placeholder={`Enter ${attributes[0].key}`} className="typeBox" />
+                    <p className="fieldlabel">{attributes[0].name}</p>
+                    <input type={attributes[0].type} name={attributes[0].name} key={attributes[0].key} data-key={attributes[0].key} value={inputValue.value} onChange={handleTextChange} onKeyDown={handleTextChange} placeholder={`Enter your ${attributes[0].key}`} className="typeBox" />
                 </div>;
             case 'buttons':
                 const buttons = elementObject[elementObject["type"]];
                 const newButtons = buttons.fields.map((fieldObject) => <button key={fieldObject.uid}
                     data-key={buttons.key} onClick={(e) => handleButtonClick(e.target.getAttribute('data-key'), fieldObject.text)}>{fieldObject.text}</button>)
                 return <div key={buttons.key}>{newButtons}</div>
+            case 'gif':
+                const gif = elementObject[elementObject["type"]];
+                return <img className="chatImage" src={gif[0].url} alt={ gif[0].name } />
             case 'text':
                 return <p>{elementObject[elementObject["type"]].replace("<br />","")}</p>;
             default:
@@ -105,7 +108,7 @@ function Chat({ subscriptionChannel, userId, name, img, messages, channelName })
     }
 
     return (
-        <div className='chatContainer chat-widget'>
+        <div className='chatContainer'>
             <div className="chatHeader">
                 <img src={img} alt="zoomInfo" className="logo" />
                 <div className="titleConatiner">
@@ -113,8 +116,9 @@ function Chat({ subscriptionChannel, userId, name, img, messages, channelName })
                 <p>{`You are chatting with${name}`}</p>
                 </div>
             </div>
-
+            <img src={img} alt="zoomInfo" className="chatlogo" />
             <div className='textContainer'>
+           
                 {
                     chatMessages.map((data, id) => {
                         if (data.type === "text") {

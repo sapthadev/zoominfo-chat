@@ -58,17 +58,21 @@ function App() {
         getChannels();
     }
 
-    return (<div> {
-        channelID && !isChatOpen && <button name="Zoominfo"
-            onClick={handleClick}>Zoominfo</button>
+    return (<div>
+        <h1 className="pageTitle">Zoominfo Assessment</h1>
+        <h2 className="pageTitle">Sapthagiri</h2>
+
+        {
+        channelID && !isChatOpen && <img className="chatIcon" data-testid="chatIcon" src="https://insent-assets.s3.amazonaws.com/bot-logo/option-1.png"
+            onClick={handleClick}/>
     }
         {
-        botName && (<Chat subscriptionChannel={subscriptionChannel}
-            channelName={channelID}
-            userId={userId}
-            name={botName}
-            img={imgUrl}
-            messages={messages}/>)
+        botName && (<div className="chatWidget"><Chat subscriptionChannel={subscriptionChannel}
+                channelName={channelID}
+                userId={userId}
+                name={botName}
+                img={imgUrl}
+                messages={messages}/></div>)
     } </div>);
 }
 

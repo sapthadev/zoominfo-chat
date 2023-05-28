@@ -1,82 +1,143 @@
-body{
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
+
   .chatContainer{
-    height: 90vh;
-    width:500px;
-    padding: 2rem;
+    /* height: 50vh; */
+    /* width:500px; */
+    display: flex;
+    /* width: 80%; */
+    height: 90%;
+
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
-  
-    background-color: #27374D;
-    color:#DDE6ED;
-    border-radius: 4px;
+    
+    background: rgb(44, 96, 215);
+    border-radius: 30px;
+    box-shadow: rgba(80, 80, 80, 0.2) 0px 5px 10px;
   }
   
   .incomeMessage{
-    background-color: #526D82;
-    width: 80%;
-    padding: 1rem;
-    border-radius: 4px;
+    margin: 5px 10px 5px 10px;
+
+    overflow-wrap: break-word;
+    color: rgba(61, 78, 99, 0.8);
+    text-align: left;
+    line-height: 20px;
+    border-radius: 15px 15px 15px 5px;
+    padding: 10px 20px;
+    background-color: rgb(237, 240, 247);
+    box-sizing: border-box;
+    display: inline-block;
+    white-space: pre-wrap;
+    word-break: break-word;
   }
   
   
   .textContainer{
-    height: 900px;
-    width: 100%;
+    height: 85%;
+    background: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    border-radius: 0px 0px 30px 30px;
+    margin-top: -3.5rem;
+    padding-top: 1rem;
+    padding-left: 4rem;
   }
   
   .typeBox{
-    width: 83%;
-    height: 40px;
-    margin-top: 10px;
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: none;
+    width: 100%;
+    padding: 23px 17px 20px;
+    box-sizing: border-box;
+    color: black;
+    border-radius: 15px;
+    background: white;
+    border: 1px solid rgb(44, 96, 215);
+    margin: 0px;
   }
 
   .logo{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     margin-right: 1rem;
+    border: 4px solid rgb(44, 96, 215);
+  }
+
+  .chatlogo{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    border: 4px solid rgb(44, 96, 215);
+    z-index: 10;
+  }
+
+  .chatImage{
+    width: 200px;
+    height: 200px;
+    border-radius: 15px 15px 15px 5px;
+    margin-left: .5rem;
+    border: 2px solid rgb(237, 240, 247);;
   }
 
   .chatHeader{
-    width: 100%;
+    width: 96%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    cursor: pointer;
+    padding: .5rem;
+    border-radius: 30px 30px 0px 0px;
+    border-bottom: 1px solid;
+    background: rgb(255, 255, 255);
+    box-shadow: rgba(27, 27, 27, 0.1) 0px 5px 15px 0px;
+  }
+
+  .titleConatiner h3{
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 19px;
+    max-width: 70%;
+    max-height: 2.5rem;
   }
 
   .titleConatiner p {
-    margin-top: -25px;
-    font-size: 14px;
+    margin-top: -15px;
+    font-size: 10px;
+    opacity: 0.6;
+    /* margin: 1px 30px 1px 0px; */
   }
   
-  button{
+  .chatIcon{
     padding: .5rem;
-    font-size: 14px;
-    margin: .5rem;
-    border-radius: 4px;
-    background-color: #27374D;
+    /* font-size: 14px;
+    margin: .5rem; */
+    border-radius: 20px;
+    background: rgb(44, 96, 215);
     color:#DDE6ED;
-    border-color: #9DB2BF;
+    border:none;
     cursor: pointer;
+    width: 50px;
+    height: 50px;
+
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    z-index: 31415999;
   }
 
   p{
     font-size: 14px;
+  }
+
+  .fieldlabel{
+    margin: 0px 10px 10px;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 700;
+    color: #000;
   }
   
   ::-webkit-scrollbar {
@@ -92,13 +153,12 @@ body{
     background: #526D82; 
   }
 
-  .chat-widget {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    border-radius: 5px;
-    padding: 10px;
-    overflow-y: scroll;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  
+  @media only screen and (max-width : 480px) {
+    .chatContainer{
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+}
