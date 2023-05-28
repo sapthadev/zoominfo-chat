@@ -91,3 +91,14 @@ body{
   ::-webkit-scrollbar-thumb:window-inactive {
     background: #526D82; 
   }
+
+  .chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    overflow-y: scroll;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  

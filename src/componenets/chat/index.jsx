@@ -105,7 +105,7 @@ function Chat({ subscriptionChannel, userId, name, img, messages, channelName })
     }
 
     return (
-        <div className='chatContainer'>
+        <div className='chatContainer chat-widget'>
             <div className="chatHeader">
                 <img src={img} alt="zoomInfo" className="logo" />
                 <div className="titleConatiner">

@@ -3,7 +3,7 @@ import "./App.css";
 import React, {useState, useEffect} from "react";
 import Chat from "./componenets/chat";
 import axios from "axios";
-import { REACT_APP_KEY } from "./utils/config";
+import {REACT_APP_KEY} from "./utils/config";
 
 function App() {
     const [userId, setUserId] = useState("");
@@ -12,6 +12,7 @@ function App() {
     const [botName, setBotName] = useState("");
     const [imgUrl, setImgUrl] = useState("");
     const [messages, setMessages] = useState([]);
+    const [isChatOpen, setIsChatOpen] = useState(false);
     const appKey = REACT_APP_KEY;
 
     useEffect(() => {
@@ -47,6 +48,7 @@ function App() {
             setBotName(sender.name);
             setImgUrl(sender.img);
             setMessages(messages);
+            setIsChatOpen(true);
         } catch (error) {
             console.error(error);
         }
@@ -56,22 +58,18 @@ function App() {
         getChannels();
     }
 
-    return (
-        <div>
-            {
-                channelID && <button name="Zoominfo" onClick={handleClick}>Zoominfo</button>
-            }
-            {
-            botName && (
-                <Chat subscriptionChannel={subscriptionChannel}
-                    channelName={channelID}
-                    userId={userId}
-                    name={botName}
-                    img={imgUrl}
-                    messages={messages}/>
-            )
-        } </div>
-    );
+    return (<div> {
+        channelID && !isChatOpen && <button name="Zoominfo"
+            onClick={handleClick}>Zoominfo</button>
+    }
+        {
+        botName && (<Chat subscriptionChannel={subscriptionChannel}
+            channelName={channelID}
+            userId={userId}
+            name={botName}
+            img={imgUrl}
+            messages={messages}/>)
+    } </div>);
 }
 
 export default App;
