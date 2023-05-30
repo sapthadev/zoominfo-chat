@@ -73,7 +73,11 @@ function App() {
                 name={botName}
                 img={imgUrl}
                 messages={messages}/></div>)
-    } </div>);
+        }
+    
+    
+    
+    </div>);
 }
 
 export default App;
