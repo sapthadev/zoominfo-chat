@@ -30,6 +30,7 @@
     display: inline-block;
     white-space: pre-wrap;
     word-break: break-word;
+    max-width: 250px;
   }
   
   
@@ -139,6 +140,38 @@
     line-height: 20px;
     font-weight: 700;
     color: #000;
+  }
+
+  .sentMessages{
+    margin-left: auto;
+    overflow-wrap: break-word;
+    float: right;
+    line-height: 20px;
+    background-color: rgb(44, 96, 215);
+    color: rgb(250, 248, 248);
+    border-radius: 15px 15px 5px;
+    padding: 10px 20px;
+    margin-right: .5rem;
+    text-align: left;
+    max-width: 250px;
+    white-space: pre-wrap;
+  }
+
+  .buttonContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 98%;
+    height: 100px;
+  }
+
+  .chatButton{
+    border-radius:15px;
+    padding: 10px 20px;
+    background-color: rgb(237, 240, 247);
+    border: 1px solid rgb(44, 96, 215);
+    cursor: pointer;
   }
   
   ::-webkit-scrollbar {
